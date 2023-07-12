@@ -69,7 +69,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link text-white " href="./profile.html">
+                <a class="nav-link text-white " href="#">
 
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">person</i>
@@ -81,7 +81,7 @@
 
 
             <li class="nav-item">
-                <a class="nav-link text-white " href="./sign-in.html">
+                <a class="nav-link text-white " href="{{ url('login') }}">
 
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">login</i>
@@ -93,7 +93,7 @@
 
 
             <li class="nav-item">
-                <a class="nav-link text-white " href="./sign-up.html">
+                <a class="nav-link text-white " href="{{ url('register') }}">
 
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">assignment</i>

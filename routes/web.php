@@ -3,6 +3,7 @@
 use App\Http\Controllers\KursusController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\PembelajaranController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,12 +32,15 @@ Route::get('/dashboard', function () {
 // Route::get('/kursus', function () {
 //     return view('adminpage.kursus.index');
 // });
-Route::resource('kursus', KursusController::class);
+Route::resource('kursus', KursusController::class)->middleware('auth');
 
 // Route::get('/materi', function () {
 //     return view('adminpage.materi.index');
 // });
-Route::resource('materi', MateriController::class);
+Route::resource('materi', MateriController::class)->middleware('auth');
 
 
-Route::resource('pembelajaran', PembelajaranController::class);
+Route::resource('pembelajaran', PembelajaranController::class)->middleware('auth');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
