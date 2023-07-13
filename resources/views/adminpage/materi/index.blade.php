@@ -52,10 +52,6 @@
                                     <form method="POST" id="formDelete" action="{{ route('materi.destroy', $row->id) }}">
                                         @csrf
                                         @method('DELETE')
-                                        <a class="btn btn-info btn-sm" title="Detail Materi"
-                                            href="{{ route('materi.show', $row->id) }}">
-                                            <i class="bi bi-eye">Show</i>
-                                        </a>
                                         <a class="btn btn-warning btn-sm" title="Ubah Materi"
                                             href="{{ route('materi.edit', $row->id) }}">
                                             <i class="bi bi-pencil">Edit</i>

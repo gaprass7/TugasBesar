@@ -70,7 +70,11 @@ class PembelajaranController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $row = Pembelajaran::find($id);
+        $ar_kursus = Kursus::all();
+        $ar_materi = Materi::all();
+
+        return view('adminpage.pembelajaran.form_edit', compact('row', 'ar_kursus', 'ar_materi'));
     }
 
     /**
@@ -78,7 +82,23 @@ class PembelajaranController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate(
+            [
+                'kursus_id' => 'Required',
+                'materi_id' => 'Required',
+            ]
+        );
+
+        DB::table('pembelajaran')->where('id', $id)->update(
+            [
+                'kursus_id' => $request->kursus_id,
+                'materi_id' => $request->materi_id,
+                'updated_at' => now(),
+            ]
+        );
+
+        return redirect()->route('pembelajaran.index')
+            ->with('sucsess', 'Data Berhasil Disimpan');
     }
 
     /**
@@ -86,6 +106,10 @@ class PembelajaranController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $row = Pembelajaran::find($id);
+        Pembelajaran::where('id', $id)->delete();
+
+        return redirect()->route('pembelajaran.index')
+            ->with('sucsess', 'Data Berhasil DiHapus');
     }
 }
